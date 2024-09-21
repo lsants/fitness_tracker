@@ -12,6 +12,7 @@ df = pd.read_csv(workout_data_path)
 bodyweight = 160
 f = lambda x: bodyweight if x == 'bodyweight' else float(x)
 df['weight'] = df['weight'].apply(f)
+df.loc[df['group'] == 'abs', 'weight'] *= 0.2
 df.rename(columns={'weight':'weight_lbs'}, inplace=True)
 
 # ---------- Get total muscle work volume ------------
